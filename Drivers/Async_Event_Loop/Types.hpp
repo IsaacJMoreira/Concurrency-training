@@ -50,7 +50,7 @@ enum QueueableReturnValue{
 	 //this method has to be implemented, but here is an example:
 	 virtual void EXECUTE(void){
 		 //simple implementation of method to make a beep for 5ms;
-		 #define delay 5
+		 #define delay 10
 		 static uint32_t prevTime = 0;
 		 static uint32_t currentTime = 0;
 		 uint32_t elapsedTime;

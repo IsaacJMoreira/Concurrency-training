@@ -12,7 +12,7 @@ extern "C"
 #include "stm32f4xx_hal.h"
 }
 /*********************************************************/
-void beep(void);
+
 //Instantiate a KY-040 encoder;
 QueueableClass beepClass;
 
@@ -39,21 +39,15 @@ void MainCPP(){
 	//MAIN LOOP START
 	while(1){
 
+		/*int32_t count = encoder.getSteps();
+		if(count == 10) encoder.setPerform(false);
+		else if (count ==-10) encoder.setPerform(true);*/
+
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);
 	}
 	//END MAIN LOOP
 }
-
-void beep(void){//demonstration only.
-	GPIOB -> ODR |= GPIO_PIN_2;//SET BEEPER PIN
-	for(uint32_t _ = 0; _ < 500000; _++){
-		__NOP();
-	}
-    //HAL_Delay(5);//can't use this HAL function because the delay uses interrupts too, at a lower priority.
-	GPIOB -> ODR &= ~GPIO_PIN_2;
-}
-
 /*********************************************************/
 /*               AWAYS LEAVE IT FOR LAST                 */
 /*********************************************************/

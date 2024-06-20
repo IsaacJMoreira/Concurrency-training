@@ -25,7 +25,6 @@
 //INCLUDE THE CPP ENTRY POINT FUNCTION WRAPPER
 #include "MainCPP.hpp"
 
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -385,7 +384,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	GPIOC -> ODR &= ~GPIO_PIN_13;
 	BeepClassWrapper();
+	GPIOC -> ODR |= GPIO_PIN_13;
 }
 
 /* USER CODE END 4 */
