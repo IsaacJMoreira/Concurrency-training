@@ -16,11 +16,9 @@ void beep(void);
 //Instantiate a KY-040 encoder;
 QueueableClass beepClass;
 
-	void beepWrapper(){
+	void beepActionWrapper(){
 		beepClass.setState(TODO);
 	}
-
-
 
 KY_040 encoder(
 		GPIOA,
@@ -29,7 +27,7 @@ KY_040 encoder(
 		GPIO_PIN_1,
 		-10,
 		10,
-		beepWrapper
+		beepActionWrapper
 		);
 //CPP ENTRY POINT
 void MainCPP(){
@@ -40,7 +38,7 @@ void MainCPP(){
 
 	//MAIN LOOP START
 	while(1){
-		beepClass.EXECUTE();
+
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);
 	}
@@ -61,6 +59,9 @@ void beep(void){//demonstration only.
 /*********************************************************/
 extern "C"
 {
+	void BeepClassWrapper(void){
+		beepClass.EXECUTE();
+	}
 	void RotaryEncoderWrapper(){//TODO This needs to be done here
 		encoder.handleInterrupt();
 	}

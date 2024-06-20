@@ -2,11 +2,12 @@
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:29:3:QueueableClass::QueueableClass()	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:35:8:void QueueableClass::setState(QueueableReturnValue)	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:51:16:virtual void QueueableClass::EXECUTE()	24	static
-../Core/Src/MainCPP.cpp:19:7:void beepWrapper()	8	static
-../Core/Src/MainCPP.cpp:35:6:void MainCPP()	8	static
-../Core/Src/MainCPP.cpp:50:6:void beep()	16	static,ignoring_inline_asm
-../Core/Src/MainCPP.cpp:64:7:void RotaryEncoderWrapper()	8	static
-../Core/Src/MainCPP.cpp:67:7:void MainC()	8	static
-../Core/Src/MainCPP.cpp:70:1:void __static_initialization_and_destruction_0(int, int)	40	static
-../Core/Src/MainCPP.cpp:70:1:cpp)	8	static
-../Core/Src/MainCPP.cpp:70:1:cpp)	8	static
+../Core/Src/MainCPP.cpp:19:7:void beepActionWrapper()	8	static
+../Core/Src/MainCPP.cpp:33:6:void MainCPP()	8	static
+../Core/Src/MainCPP.cpp:48:6:void beep()	16	static,ignoring_inline_asm
+../Core/Src/MainCPP.cpp:62:7:void BeepClassWrapper()	8	static
+../Core/Src/MainCPP.cpp:65:7:void RotaryEncoderWrapper()	8	static
+../Core/Src/MainCPP.cpp:68:7:void MainC()	8	static
+../Core/Src/MainCPP.cpp:71:1:void __static_initialization_and_destruction_0(int, int)	40	static
+../Core/Src/MainCPP.cpp:71:1:cpp)	8	static
+../Core/Src/MainCPP.cpp:71:1:cpp)	8	static
