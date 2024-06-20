@@ -1,6 +1,6 @@
-Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
- ../Core/Src/../../Drivers/KY-040/KY040.hpp \
- ../Core/Src/../../Drivers/KY-040/types.hpp \
+Drivers/Async_Event_Loop/AsyncEventLoop.o: \
+ ../Drivers/Async_Event_Loop/AsyncEventLoop.cpp \
+ ../Drivers/Async_Event_Loop/../Async_Event_Loop/AsyncEventLoop.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -27,11 +27,8 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp ../Core/Inc/main.h
-../Core/Inc/MainCPP.hpp:
-../Core/Src/../../Drivers/KY-040/KY040.hpp:
-../Core/Src/../../Drivers/KY-040/types.hpp:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+../Drivers/Async_Event_Loop/../Async_Event_Loop/AsyncEventLoop.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -59,5 +56,3 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:
-../Core/Inc/main.h:

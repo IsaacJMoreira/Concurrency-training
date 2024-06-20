@@ -40,6 +40,7 @@ CPP_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Drivers/Async_Event_Loop \
 Drivers/KY-040 \
 Drivers/STM32F4xx_HAL_Driver/Src \
 

@@ -1,4 +1,4 @@
-../Drivers/KY-040/KY040.hpp:15:13:void toPerformPlaceholder()	1
+../Drivers/KY-040/KY040.hpp:20:13:void toPerformPlaceholder()	1
 ../Drivers/KY-040/KY040.cpp:11:1:KY_040::KY_040(GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t, int32_t, int32_t, callback0Args, bool)	2
 ../Drivers/KY-040/KY040.cpp:54:1:KY_040::~KY_040()	1
 ../Drivers/KY-040/KY040.cpp:54:1:virtual KY_040::~KY_040()	1

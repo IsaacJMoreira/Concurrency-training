@@ -51,6 +51,4 @@ private:
 	int32_t minValue, maxValue, Steps = 0;
 };
 
-
-
 #endif /* KY_040_KY040_HPP_ */

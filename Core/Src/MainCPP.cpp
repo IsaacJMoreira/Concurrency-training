@@ -1,7 +1,8 @@
 /*********************************************************/
 //CPP INCLUDES
 #include "MainCPP.hpp"
-#include "../../KY-040/KY040.hpp"
+#include "../../Drivers/KY-040/KY040.hpp"
+#include "../../Drivers/Async_Event_Loop/Types.hpp"
 /*********************************************************/
 //C INCLUDES
 extern "C"
@@ -13,6 +14,14 @@ extern "C"
 /*********************************************************/
 void beep(void);
 //Instantiate a KY-040 encoder;
+QueueableClass beepClass;
+
+	void beepWrapper(){
+		beepClass.setState(TODO);
+	}
+
+
+
 KY_040 encoder(
 		GPIOA,
 		GPIO_PIN_2,
@@ -20,7 +29,7 @@ KY_040 encoder(
 		GPIO_PIN_1,
 		-10,
 		10,
-		beep
+		beepWrapper
 		);
 //CPP ENTRY POINT
 void MainCPP(){
@@ -31,6 +40,7 @@ void MainCPP(){
 
 	//MAIN LOOP START
 	while(1){
+		beepClass.EXECUTE();
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);
 	}
@@ -51,7 +61,7 @@ void beep(void){//demonstration only.
 /*********************************************************/
 extern "C"
 {
-	void RotaryEncoderWrapper(){
+	void RotaryEncoderWrapper(){//TODO This needs to be done here
 		encoder.handleInterrupt();
 	}
 	void MainC(){
