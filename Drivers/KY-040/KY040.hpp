@@ -2,7 +2,12 @@
  * KY040.hpp
  *
  *  Created on: Jun 19, 2024
- *      Author: isaac
+ *      Author: Isaac Jerônimno Moreira
+ *
+ *  Description: Just a simple class that is responsible for
+ *  decoding a rotary encoder with the use of the external
+ *  interrupt. Note that a it receives a callback function
+ *  called to perform whenever e click of the encoder is sensed.
  */
 
 #ifndef KY_040_KY040_HPP_
@@ -35,7 +40,7 @@ public:
 	void setSteps(int32_t loadToSteps);
 	int32_t getSteps(void);
 	void resetSteps(void);
-	void handleInterrupt(void);
+	void handleInterrupt(void);//needs to be wrapped by a C function and placed in the main.c file.
 private:
 	GPIO_TypeDef *CLKPort;
 	uint16_t CLKPin;
