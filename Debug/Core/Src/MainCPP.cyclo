@@ -1,0 +1,8 @@
+../Drivers/STM32F4xx_HAL_Driver/Inc/../../KY-040/KY040.hpp:15:13:void toPerformPlaceholder()	1
+../Core/Src/MainCPP.cpp:25:6:void MainCPP()	1
+../Core/Src/MainCPP.cpp:40:6:void beep()	2
+../Core/Src/MainCPP.cpp:54:7:void RotaryEncoderWrapper()	1
+../Core/Src/MainCPP.cpp:57:7:void MainC()	1
+../Core/Src/MainCPP.cpp:60:1:void __static_initialization_and_destruction_0(int, int)	5
+../Core/Src/MainCPP.cpp:60:1:cpp)	1
+../Core/Src/MainCPP.cpp:60:1:cpp)	1

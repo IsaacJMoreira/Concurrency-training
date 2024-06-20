@@ -1,0 +1,10 @@
+../Drivers/KY-040/KY040.hpp:15:13:void toPerformPlaceholder()	4	static,ignoring_inline_asm
+../Drivers/KY-040/KY040.cpp:11:1:KY_040::KY_040(GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t, int32_t, int32_t, callback0Args, bool)	24	static
+../Drivers/KY-040/KY040.cpp:54:1:KY_040::~KY_040()	16	static
+../Drivers/KY-040/KY040.cpp:54:1:virtual KY_040::~KY_040()	16	static
+../Drivers/KY-040/KY040.cpp:58:6:void KY_040::setPerform(bool)	16	static
+../Drivers/KY-040/KY040.cpp:62:6:bool KY_040::getPerform()	16	static
+../Drivers/KY-040/KY040.cpp:66:6:void KY_040::setSteps(int32_t)	16	static
+../Drivers/KY-040/KY040.cpp:70:9:int32_t KY_040::getSteps()	16	static
+../Drivers/KY-040/KY040.cpp:74:6:void KY_040::resetSteps()	16	static
+../Drivers/KY-040/KY040.cpp:78:6:void KY_040::handleInterrupt()	24	static,ignoring_inline_asm
