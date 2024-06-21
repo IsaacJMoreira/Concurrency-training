@@ -29,24 +29,34 @@ enum QueueableReturnValue{
 	 QueueableClass(){
 		 this -> state = QueueableReturnValue::DONE;
 		 this -> nextClass = nullptr;
-
 	 }
 
-	 void setState(QueueableReturnValue state){
-		 this -> state = state;
-	 }
-
-	 QueueableReturnValue getState(void){
+	 virtual QueueableReturnValue getState(void) final{
 		 return this -> state;
 	 }
 
-	 void setNextClass(QueueableClass* next){
-		 this -> nextClass = next;
+	 virtual void setNextClass(QueueableClass* next)final{
+	 	 this -> nextClass = next;
 	 }
 
-	 QueueableClass* getNextClass(void){
+	 virtual QueueableClass* getNextClass(void) final{
 		 return this -> nextClass;
 	 }
+	 //this method gives the object the ability to decide what to
+	 //when the process tells it to requeue.
+	 //THIS IS AN EXAMPLE OF WHAT TO DO, BUT YOU SHOULD SO WHAT SOUITS
+	 //YOUR CODE BETTER. KEEP IN MIND THE INTEGRITY OF THE LINKED LIST!
+	 virtual void requeue(){
+		 setState(TODO);//in this case it restarts the buzzer timer.
+	 }
+
+	 //WHAT DOES THE OBJECT DO WHEN IT GETS IN QUEUE?
+	 //IN THIS IMPLEMENTATION, IT JUST CHANGES THE STATE, BUT
+	 //YOU COULD REWRITE THIS TO FIT YOUR NEEDS
+	 virtual void enqueue(){
+		 setState(TODO);
+	 }
+
 	 //this method has to be implemented, but here is an example:
 	 virtual void EXECUTE(void){
 		 //simple implementation of method to make a beep for 5ms;
@@ -56,9 +66,9 @@ enum QueueableReturnValue{
 		 uint32_t elapsedTime;
 		 static uint8_t state = 0;
 
-		 if(this -> state == QueueableReturnValue::TODO){
+		 if(this -> state == TODO){
 		 	state = 1;
-		 	this -> state = QueueableReturnValue::DOING;
+		 	setState(DOING);
 		   	prevTime = HAL_GetTick();//get the time when the change accurred
 		 }
 
@@ -76,7 +86,7 @@ enum QueueableReturnValue{
 		   	if(elapsedTime >= delay){
 		   		GPIOB -> ODR &= ~GPIO_PIN_2; //RESET BUZZER PIN;
 		   		state = 0;//we clear the state.
-		   		this -> state = QueueableReturnValue::DONE;//WE SIGNAL IT ENDED EXECUTION;
+		   		setState(DONE);//WE SIGNAL IT ENDED EXECUTION;
 		   	}
 		   }
 	 }
@@ -84,6 +94,9 @@ enum QueueableReturnValue{
  private:
 	 QueueableClass* nextClass;// points to the next class in queue
 	 QueueableReturnValue state;
+	 virtual void setState(QueueableReturnValue state)final{
+	 		 this -> state = state;
+	 	 }
  };
 
 #endif /* ASYNC_EVENT_LOOP_TYPES_HPP_ */
