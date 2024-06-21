@@ -25,9 +25,9 @@ private:
 	QueueableClass* previous;
 	QueueableClass* end;
 
-	virtual void setBeginning(QueueableClass* end)final;
+	virtual void setBeginning(QueueableClass* beginning)final;
 	virtual QueueableClass* getBeginning(void) final;
-	virtual void setPrevious(QueueableClass* end)final;
+	virtual void setPrevious(QueueableClass* previous)final;
 	virtual QueueableClass* getPrevious(void) final;
 	virtual void setEnd(QueueableClass* end)final;
 	virtual QueueableClass* getEnd(void) final;

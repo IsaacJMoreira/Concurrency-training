@@ -13,9 +13,9 @@
 /* Queueable Class return values enum  */
 
 enum QueueableReturnValue{
-	DONE        = 0b00000000,
-	TODO        = 0b00000001,
-	DOING       = 0b00000010,
+	DONE,
+	TODO,
+	DOING,
 };
 
 /* Queueable Class interface  */

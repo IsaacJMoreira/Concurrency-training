@@ -15,12 +15,12 @@ extern "C"
 /*********************************************************/
 
 
-QueueableClass beepClass;
+QueueableClass beep;
 Async_Event_Loop AsyncEventLoop;
 	//TODO FIND A WAY TO SIMPLIFY THIS
 	//IT NEEDS THIS WRAPPER TO CONFORM TO THE EXPECTED FUNCTION SIGNATURE
 	void beepActionWrapper(){
-		AsyncEventLoop.enqueue(&beepClass);
+		AsyncEventLoop.enqueue(&beep);
 	}
 	//Instantiate a KY-040 encoder;
 KY_040 encoder(
@@ -41,13 +41,13 @@ void MainCPP(){
 
 	//MAIN LOOP START
 	while(1){
-
 		/*int32_t count = encoder.getSteps();
 		if(count == 10) encoder.setPerform(false);
 		else if (count ==-10) encoder.setPerform(true);*/
-
+		GPIOA -> ODR |= GPIO_PIN_4;
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);
+
 	}
 	//END MAIN LOOP
 }

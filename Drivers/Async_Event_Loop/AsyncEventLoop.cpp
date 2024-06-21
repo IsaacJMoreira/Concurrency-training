@@ -46,7 +46,7 @@ void Async_Event_Loop::enqueue(QueueableClass* next){
 			setEnd(next);//ITS ALSO THE LAST IN QUEUE
 		}else{//IF THERE IS ALREADY OBJECTS IN QUEUE
 			setPrevious(end);// THE LAST IS NOW SECOND LAST
-			setEnd(next);//AND THE OBJECT ASSUMS END OF QUEUE
+			setEnd(next);//AND THE LAST OBJECT ASSUMS END OF QUEUE
 		}
 		this -> end -> setNextClass(nullptr);//IN ANY CASE, THE LAST OBJECT POINTS TO NOTHING.
 	}else{
@@ -55,6 +55,12 @@ void Async_Event_Loop::enqueue(QueueableClass* next){
 }
 
 void Async_Event_Loop::dequeue(QueueableClass* current){
+
+	if((getBeginning() == getEnd()) && (getBeginning() != nullptr)){
+		setBeginning(nullptr);
+		setPrevious(nullptr);
+		setEnd(nullptr);
+	}
 	if(getBeginning() != nullptr){//IF THE QUEUE ISN'T EMPTY
 		this -> previous -> setNextClass(current->getNextClass());//MAKES THE PREVIOS OBJECT POINT TO THE NEXT CLASS
 		current->setNextClass(nullptr);//MAKES SURE THE DEQUEUED OBJECT POINTS TO NOTHING
@@ -65,7 +71,11 @@ void Async_Event_Loop::dequeue(QueueableClass* current){
 //object is the last one and is DONE executing.
 void Async_Event_Loop::ASYNC_LOOP(void){
 	QueueableClass* current = getBeginning();
+
 	if(current != nullptr){//IF THERE IS A QUEUE AT ALL
+		//for test porpuses
+		GPIOA -> ODR &= ~GPIO_PIN_3;//reset green led
+		GPIOA -> ODR &= ~GPIO_PIN_4;
 		do{
 				uint8_t currentClassState = current -> getState();
 				if(currentClassState == DONE){//IF THE OBJECT IS DONE EXECUTING
@@ -80,6 +90,8 @@ void Async_Event_Loop::ASYNC_LOOP(void){
 			}while(current != nullptr);//IF THE CURRENT OBJECT IS NULL
 			setEnd(getPrevious());
 			setPrevious(getBeginning());
+	}else{
+		GPIOA -> ODR |= GPIO_PIN_3;//set green led
 	}
 }
 
