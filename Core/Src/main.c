@@ -384,9 +384,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	GPIOC -> ODR &= ~GPIO_PIN_13;
+	//GPIOC -> ODR &= ~GPIO_PIN_13;
 	EVENT_LOOP_WRAPPER();
-	GPIOC -> ODR |= GPIO_PIN_13;
+	//GPIOC -> ODR |= GPIO_PIN_13;
 }
 
 /* USER CODE END 4 */

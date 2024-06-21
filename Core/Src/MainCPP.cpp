@@ -21,6 +21,7 @@ Async_Event_Loop AsyncEventLoop;
 	//IT NEEDS THIS WRAPPER TO CONFORM TO THE EXPECTED FUNCTION SIGNATURE
 	void beepActionWrapper(){
 		AsyncEventLoop.enqueue(&beep);
+
 	}
 	//Instantiate a KY-040 encoder;
 KY_040 encoder(
@@ -37,14 +38,16 @@ void MainCPP(){
 
 	//SETUP START
 
+	GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
 	//END SETUP
 
 	//MAIN LOOP START
 	while(1){
-		/*int32_t count = encoder.getSteps();
-		if(count == 10) encoder.setPerform(false);
-		else if (count ==-10) encoder.setPerform(true);*/
-		GPIOA -> ODR |= GPIO_PIN_4;
+
+		int32_t count = encoder.getSteps();
+		if(count == 10) GPIOC -> ODR &= ~GPIO_PIN_13;//onboard blue led ON
+		else if (count ==-10) GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
+
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);
 
