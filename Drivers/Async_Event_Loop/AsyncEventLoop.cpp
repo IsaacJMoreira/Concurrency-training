@@ -55,7 +55,7 @@ void Async_Event_Loop::enqueue(QueueableClass* next){
 }
 
 void Async_Event_Loop::dequeue(QueueableClass* current){
-	if(getBeginnig() != nullptr){//IF THE QUEUE ISN'T EMPTY
+	if(getBeginning() != nullptr){//IF THE QUEUE ISN'T EMPTY
 		this -> previous -> setNextClass(current->getNextClass());//MAKES THE PREVIOS OBJECT POINT TO THE NEXT CLASS
 		current->setNextClass(nullptr);//MAKES SURE THE DEQUEUED OBJECT POINTS TO NOTHING
 	}

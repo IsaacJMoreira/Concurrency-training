@@ -2,6 +2,7 @@
 //CPP INCLUDES
 #include "MainCPP.hpp"
 #include "../../Drivers/KY-040/KY040.hpp"
+#include "../../Drivers/Async_Event_Loop/AsyncEventLoop.hpp"
 #include "../../Drivers/Async_Event_Loop/Types.hpp"
 /*********************************************************/
 //C INCLUDES
@@ -13,13 +14,15 @@ extern "C"
 }
 /*********************************************************/
 
-//Instantiate a KY-040 encoder;
+
 QueueableClass beepClass;
-
+Async_Event_Loop AsyncEventLoop;
+	//TODO FIND A WAY TO SIMPLIFY THIS
+	//IT NEEDS THIS WRAPPER TO CONFORM TO THE EXPECTED FUNCTION SIGNATURE
 	void beepActionWrapper(){
-		beepClass.setState(TODO);
+		AsyncEventLoop.enqueue(&beepClass);
 	}
-
+	//Instantiate a KY-040 encoder;
 KY_040 encoder(
 		GPIOA,
 		GPIO_PIN_2,
@@ -52,10 +55,10 @@ void MainCPP(){
 /*********************************************************/
 /*               AWAYS LEAVE IT FOR LAST                 */
 /*********************************************************/
-extern "C"
+extern "C"//TODO FIND A WAY TO SIMPLIFY THIS
 {
-	void BeepClassWrapper(void){
-		beepClass.EXECUTE();
+	void EVENT_LOOP_WRAPPER(void){
+		AsyncEventLoop.ASYNC_LOOP();
 	}
 	void RotaryEncoderWrapper(){//TODO This needs to be done here
 		encoder.handleInterrupt();

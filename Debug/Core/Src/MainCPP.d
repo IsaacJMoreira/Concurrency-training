@@ -30,6 +30,8 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ ../Core/Src/../../Drivers/Async_Event_Loop/AsyncEventLoop.hpp \
+ ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp \
  ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp ../Core/Inc/main.h
 ../Core/Inc/MainCPP.hpp:
 ../Core/Src/../../Drivers/KY-040/KY040.hpp:
@@ -63,5 +65,7 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+../Core/Src/../../Drivers/Async_Event_Loop/AsyncEventLoop.hpp:
+../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:
 ../Core/Inc/main.h:
