@@ -20,8 +20,7 @@ Async_Event_Loop AsyncEventLoop;
 	//TODO FIND A WAY TO SIMPLIFY THIS
 	//IT NEEDS THIS WRAPPER TO CONFORM TO THE EXPECTED FUNCTION SIGNATURE
 	void beepActionWrapper(){
-		AsyncEventLoop.enqueue(&beep);
-
+		AsyncEventLoop.enqueue(beep);
 	}
 	//Instantiate a KY-040 encoder;
 KY_040 encoder(

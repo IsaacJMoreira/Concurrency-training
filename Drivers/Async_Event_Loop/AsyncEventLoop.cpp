@@ -13,6 +13,9 @@ Async_Event_Loop::Async_Event_Loop() :
     previous(nullptr),
     end(nullptr) {
 }
+
+Async_Event_Loop::~Async_Event_Loop() {/*NOTHING TO SE HERE*/}
+
 void Async_Event_Loop::setBeginning(QueueableClass* beginning){
 	this -> beginning = beginning;
 }
@@ -37,63 +40,45 @@ QueueableClass* Async_Event_Loop::getEnd(void){
 	return this -> end;
 }
 
-void Async_Event_Loop::enqueue(QueueableClass* next) {
+void Async_Event_Loop::enqueue(QueueableClass next) {
 
-    if (next->getState() == DONE) {
+    if (next.getState() == DONE) {
         if (getEnd() == nullptr) {
             // Queue is empty, add the first item
-            setBeginning(next);
-            setPrevious(next);
-            setEnd(next);
+            setBeginning(&next);
+            setPrevious(&next);
+            setEnd(&next);
         } else {
             // Queue is not empty, add to the end
-            getEnd()->setNextClass(next);
-            setPrevious(next);
-            setEnd(next);
+        	setPrevious(getEnd());// TODO
+            getEnd()->setNextClass(&next);
+            setEnd(&next);
         }
-        next->enqueue(); // Signal the object it's enqueued
-        next->setNextClass(nullptr); // Ensure new end points to null
+        next.enqueue(); // Signal the object it's enqueued
+        next.setNextClass(nullptr); // Ensure new end points to null
     } else {
-        next->requeue(); // Object is not done, requeue it
+        next.requeue(); // Object is not done, requeue it
     }
 }
 
 
-void Async_Event_Loop::dequeue(QueueableClass* current) {
-    if (current == nullptr || getBeginning() == nullptr) {
-        return; // Nothing to dequeue if queue is empty or current is nullptr
-    }
+void Async_Event_Loop::dequeue(QueueableClass current) {
 
-    if (getBeginning() == current && getEnd() == current) {
+    if (getBeginning() == &current && getEnd() == &current) {
         // Only one item in the queue
         setBeginning(nullptr);
         setPrevious(nullptr);
         setEnd(nullptr);
-    } else if (getBeginning() == current) {
+    } else if (getBeginning() == &current) {
         // Dequeuing the first item
-        setBeginning(current->getNextClass());
-        if (getEnd() == current) {
-            // Adjust end pointer if current was also the last item
-            setEnd(getBeginning());
-        }
+        setBeginning(current.getNextClass());
     } else {
         // Dequeuing an item in the middle or end
-        QueueableClass* prev = getBeginning();
-        while (prev != nullptr && prev->getNextClass() != current) {
-            prev = prev->getNextClass();
-        }
-        if (prev != nullptr) {
-            prev->setNextClass(current->getNextClass());
-            if (getEnd() == current) {
-                // Adjust end pointer if current was the last item
-                setEnd(prev);
-            }
-        }
+        getPrevious()->setNextClass(current.getNextClass());
     }
 
-    current->setNextClass(nullptr); // Ensure dequeued object points to nothing
+    current.setNextClass(nullptr); // Ensure dequeued object points to nothing
 }
-
 
 //TODO analize this case:
 //object is the last one and is DONE executing.
@@ -106,19 +91,25 @@ void Async_Event_Loop::ASYNC_LOOP(void){
         // Resetting for test purposes
         GPIOA->ODR &= ~GPIO_PIN_3; // Reset green led
 
+
         do {
+        	GPIOC->ODR &= ~GPIO_PIN_13; // SET BLUE led
+
             uint8_t currentClassState = current->getState();
             next = current->getNextClass(); // Save next pointer before any potential dequeue
+            // Update pointers for next iteration
 
             if(currentClassState == DONE){
-                dequeue(current); // Dequeue the object if it's done
+            	QueueableClass *temp = current;
+            	setPrevious(current);
+            	current = next;
+                dequeue(*temp); // Dequeue the object if it's done
             } else {
                 current->EXECUTE(); // Execute the object if it's not done
+                setPrevious(current);
+                current = next;
             }
-
-            // Update pointers for next iteration
-            setPrevious(current);
-            current = next;
+            GPIOC->ODR |= GPIO_PIN_13; // RESET BLUE led
 
         } while(current != nullptr);
 
@@ -126,14 +117,11 @@ void Async_Event_Loop::ASYNC_LOOP(void){
         setEnd(getPrevious());
         // Reset previous pointer to beginning (if needed)
         setPrevious(getBeginning());
-
     } else {
         GPIOA->ODR |= GPIO_PIN_3; // Set green led (no queue case)
     }
 }
 
 
-Async_Event_Loop::~Async_Event_Loop() {
-	// TODO Auto-generated destructor stub
-}
+
 
