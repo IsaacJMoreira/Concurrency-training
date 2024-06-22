@@ -43,9 +43,6 @@ void MainCPP(){
 	//MAIN LOOP START
 	while(1){
 
-		int32_t count = encoder.getSteps();
-		if(count == 10) GPIOC -> ODR &= ~GPIO_PIN_13;//onboard blue led ON
-		else if (count ==-10) GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
 
 		GPIOB -> ODR ^= GPIO_PIN_10;
 		HAL_Delay(100);

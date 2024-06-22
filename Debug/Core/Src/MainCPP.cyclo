@@ -9,10 +9,10 @@
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:63:16:virtual void QueueableClass::EXECUTE()	5
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:99:16:virtual void QueueableClass::setState(QueueableReturnValue)	1
 ../Core/Src/MainCPP.cpp:22:7:void beepActionWrapper()	1
-../Core/Src/MainCPP.cpp:36:6:void MainCPP()	3
-../Core/Src/MainCPP.cpp:62:7:void EVENT_LOOP_WRAPPER()	1
-../Core/Src/MainCPP.cpp:65:7:void RotaryEncoderWrapper()	1
-../Core/Src/MainCPP.cpp:68:7:void MainC()	1
-../Core/Src/MainCPP.cpp:71:1:void __static_initialization_and_destruction_0(int, int)	5
-../Core/Src/MainCPP.cpp:71:1:cpp)	1
-../Core/Src/MainCPP.cpp:71:1:cpp)	1
+../Core/Src/MainCPP.cpp:36:6:void MainCPP()	1
+../Core/Src/MainCPP.cpp:59:7:void EVENT_LOOP_WRAPPER()	1
+../Core/Src/MainCPP.cpp:62:7:void RotaryEncoderWrapper()	1
+../Core/Src/MainCPP.cpp:65:7:void MainC()	1
+../Core/Src/MainCPP.cpp:68:1:void __static_initialization_and_destruction_0(int, int)	5
+../Core/Src/MainCPP.cpp:68:1:cpp)	1
+../Core/Src/MainCPP.cpp:68:1:cpp)	1
