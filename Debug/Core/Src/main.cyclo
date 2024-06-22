@@ -6,5 +6,5 @@
 ../Core/Src/main.c:280:13:MX_DMA_Init	1
 ../Core/Src/main.c:298:13:MX_GPIO_Init	1
 ../Core/Src/main.c:380:6:HAL_GPIO_EXTI_Callback	1
-../Core/Src/main.c:386:6:HAL_TIM_PeriodElapsedCallback	1
-../Core/Src/main.c:398:6:Error_Handler	1
+../Core/Src/main.c:388:6:HAL_TIM_PeriodElapsedCallback	1
+../Core/Src/main.c:404:6:Error_Handler	2

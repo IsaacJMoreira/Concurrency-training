@@ -91,14 +91,11 @@ void Async_Event_Loop::ASYNC_LOOP(void){
         // Resetting for test purposes
         GPIOA->ODR &= ~GPIO_PIN_3; // Reset green led
 
-
         do {
         	GPIOC->ODR &= ~GPIO_PIN_13; // SET BLUE led
-
             uint8_t currentClassState = current->getState();
             next = current->getNextClass(); // Save next pointer before any potential dequeue
             // Update pointers for next iteration
-
             if(currentClassState == DONE){
             	QueueableClass *temp = current;
             	setPrevious(current);
@@ -112,7 +109,6 @@ void Async_Event_Loop::ASYNC_LOOP(void){
             GPIOC->ODR |= GPIO_PIN_13; // RESET BLUE led
 
         } while(current != nullptr);
-
         // After the loop, update end pointer
         setEnd(getPrevious());
         // Reset previous pointer to beginning (if needed)

@@ -358,10 +358,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -379,14 +379,20 @@ static void MX_GPIO_Init(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
+	HAL_TIM_Base_Stop_IT(&htim11);//Stop timer interrupt decoding
 	RotaryEncoderWrapper();//performs the decoding logic here
+	HAL_TIM_Base_Start_IT(&htim11);//Restarts timer interrupt decoding
 
 	}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	//GPIOC -> ODR &= ~GPIO_PIN_13;
+
+	HAL_NVIC_DisableIRQ	(EXTI0_IRQn);
+	HAL_NVIC_DisableIRQ	(EXTI1_IRQn);
 	EVENT_LOOP_WRAPPER();
-	//GPIOC -> ODR |= GPIO_PIN_13;
+	HAL_NVIC_EnableIRQ	(EXTI0_IRQn);
+	HAL_NVIC_EnableIRQ	(EXTI1_IRQn);
+
 }
 
 /* USER CODE END 4 */
@@ -403,7 +409,9 @@ void Error_Handler(void)
   while (1)
   {
 	  GPIOC -> ODR ^= GPIO_PIN_13;
-	  HAL_Delay(100);
+	  for(uint32_t _ = 0; _ < 50000000; _++){
+		  __NOP();
+	  }
   }
   /* USER CODE END Error_Handler_Debug */
 }
