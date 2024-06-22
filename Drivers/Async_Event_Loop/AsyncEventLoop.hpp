@@ -16,8 +16,8 @@ public:
 	Async_Event_Loop();
 	virtual ~Async_Event_Loop();
 
-	virtual void enqueue(QueueableClass next) final;
-	virtual void dequeue(QueueableClass current) final;
+	virtual void enqueue(QueueableClass* next) final;
+	virtual void dequeue(QueueableClass* current) final;
 	virtual void ASYNC_LOOP(void) final;
 
 private:

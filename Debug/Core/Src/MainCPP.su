@@ -8,8 +8,7 @@
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:58:16:virtual void QueueableClass::enqueue()	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:63:16:virtual void QueueableClass::EXECUTE()	24	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:99:16:virtual void QueueableClass::setState(QueueableReturnValue)	16	static
-../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:26:8:constexpr QueueableClass::QueueableClass(const QueueableClass&)	16	static
-../Core/Src/MainCPP.cpp:22:7:void beepActionWrapper()	24	static
+../Core/Src/MainCPP.cpp:22:7:void beepActionWrapper()	8	static
 ../Core/Src/MainCPP.cpp:36:6:void MainCPP()	16	static
 ../Core/Src/MainCPP.cpp:62:7:void EVENT_LOOP_WRAPPER()	8	static
 ../Core/Src/MainCPP.cpp:65:7:void RotaryEncoderWrapper()	8	static

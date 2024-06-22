@@ -386,13 +386,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-
+	GPIOC->ODR &= ~GPIO_PIN_13; // SET BLUE led
 	HAL_NVIC_DisableIRQ	(EXTI0_IRQn);
 	HAL_NVIC_DisableIRQ	(EXTI1_IRQn);
 	EVENT_LOOP_WRAPPER();
 	HAL_NVIC_EnableIRQ	(EXTI0_IRQn);
 	HAL_NVIC_EnableIRQ	(EXTI1_IRQn);
-
+	GPIOC->ODR |= GPIO_PIN_13; // RESET BLUE led
 }
 
 /* USER CODE END 4 */
