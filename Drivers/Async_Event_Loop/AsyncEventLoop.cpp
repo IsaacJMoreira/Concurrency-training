@@ -99,7 +99,6 @@ void Async_Event_Loop::ASYNC_LOOP() {
                 setPrevious(current);
             }
 
-
             current = next; // Move to the next item in the queue
 
         } while (current != nullptr);

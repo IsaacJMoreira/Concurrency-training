@@ -323,11 +323,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_PIN_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : KEY_Pin */
-  GPIO_InitStruct.Pin = KEY_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(KEY_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : DT_ROTARY_Pin CLK_ROTARY_Pin */
   GPIO_InitStruct.Pin = DT_ROTARY_Pin|CLK_ROTARY_Pin;
@@ -358,10 +358,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -378,20 +381,31 @@ static void MX_GPIO_Init(void)
 /********************************************/
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-
-	HAL_TIM_Base_Stop_IT(&htim11);//Stop timer interrupt decoding
-	RotaryEncoderWrapper();//performs the decoding logic here
-	HAL_TIM_Base_Start_IT(&htim11);//Restarts timer interrupt decoding
+	//DESABLE THE ASYNC LOOP WHILE HANDLING PIN INTERRUPTS
+	HAL_TIM_Base_Stop_IT(&htim11);
+	if((GPIO_Pin == GPIO_PIN_1) || (GPIO_Pin == GPIO_PIN_2)){
+		RotaryEncoderWrapper();//performs the rotary decoding logic here
+	}
+	if(GPIO_Pin == GPIO_PIN_0){
+		ButtonEncoderWrapper();
+	}
+	//ENABLE THE ASYNC LOOP AFTER PIN INTERRUPTS ARE DECODED
+	HAL_TIM_Base_Start_IT(&htim11);
 
 	}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	GPIOC->ODR &= ~GPIO_PIN_13; // SET BLUE led
+	//DISABLE PIN INTERRUPTS WHILE EXECUTING THE LOOP
 	HAL_NVIC_DisableIRQ	(EXTI0_IRQn);
 	HAL_NVIC_DisableIRQ	(EXTI1_IRQn);
+	HAL_NVIC_DisableIRQ	(EXTI2_IRQn);
+	//EXECUTE THE LOOP
 	EVENT_LOOP_WRAPPER();
+	//ENABLE PIN INTERRUPTS AFTER THE LOOP EXECUTED
 	HAL_NVIC_EnableIRQ	(EXTI0_IRQn);
 	HAL_NVIC_EnableIRQ	(EXTI1_IRQn);
+	HAL_NVIC_EnableIRQ	(EXTI2_IRQn);
 	GPIOC->ODR |= GPIO_PIN_13; // RESET BLUE led
 }
 

@@ -16,6 +16,7 @@ extern "C"
 #endif
 	void MainC();
 	void RotaryEncoderWrapper();
+	void ButtonEncoderWrapper();
 #ifdef __cplusplus
 }
 #endif

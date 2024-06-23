@@ -33,7 +33,7 @@ enum QueueableReturnValue{
 
 	 ~QueueableClass(){/*NOTHING TO SEE HERE*/ }
 
-	 virtual QueueableReturnValue getState(void) final{
+	 virtual QueueableReturnValue getState(void)final{
 		 return this -> state;
 	 }
 
@@ -62,13 +62,13 @@ enum QueueableReturnValue{
 	 //this method has to be implemented, but here is an example:
 	 virtual void EXECUTE(void){
 		 //simple implementation of method to make a beep for 5ms;
-		 #define delay 10
+		 #define delay 15
 		 static uint32_t prevTime = 0;
 		 static uint32_t currentTime = 0;
 		 uint32_t elapsedTime;
 		 static uint8_t state = 0;
 
-		 if(this -> state == TODO){
+		 if(getState() == TODO){
 		 	state = 1;
 		 	setState(DOING);
 		   	prevTime = HAL_GetTick();//get the time when the change accurred
@@ -92,13 +92,14 @@ enum QueueableReturnValue{
 		   	}
 		   }
 	 }
-
+ protected:
+	 virtual void setState(QueueableReturnValue state)final{
+	 	 		 this -> state = state;
+	 	 	 }
  private:
 	 QueueableClass* nextClass;// points to the next class in queue
 	 QueueableReturnValue state;
-	 virtual void setState(QueueableReturnValue state)final{
-	 		 this -> state = state;
-	 	 }
+
  };
 
 #endif /* ASYNC_EVENT_LOOP_TYPES_HPP_ */
