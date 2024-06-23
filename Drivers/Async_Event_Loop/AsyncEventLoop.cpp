@@ -97,7 +97,7 @@ void Async_Event_Loop::ASYNC_LOOP() {
             } else {
                 current->EXECUTE(); // Execute the object if it's not done
                 setPrevious(current);
-            }
+}
 
             current = next; // Move to the next item in the queue
 
