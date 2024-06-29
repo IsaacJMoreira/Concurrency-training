@@ -1,3 +1,5 @@
+//TODO get rid of UGUI inside the LCD lib.
+
 /*********************************************************/
 //CPP INCLUDES
 #include <string>
