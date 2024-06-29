@@ -9,8 +9,11 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Drivers/UGUI/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/LCD/subdir.mk
 -include Drivers/KY-040/subdir.mk
+-include Drivers/Frame_Builder/subdir.mk
 -include Drivers/Async_Event_Loop/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk

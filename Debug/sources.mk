@@ -41,6 +41,9 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/Async_Event_Loop \
+Drivers/Frame_Builder \
 Drivers/KY-040 \
+Drivers/LCD \
 Drivers/STM32F4xx_HAL_Driver/Src \
+Drivers/UGUI \
 

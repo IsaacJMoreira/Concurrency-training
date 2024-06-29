@@ -1,9 +1,12 @@
 /*********************************************************/
 //CPP INCLUDES
+#include <string>
 #include "MainCPP.hpp"
 #include "../../Drivers/KY-040/KY040.hpp"
 #include "../../Drivers/Async_Event_Loop/AsyncEventLoop.hpp"
 #include "../../Drivers/Async_Event_Loop/Types.hpp"
+#include "../../Drivers/Frame_Builder/Assets.hpp"
+#include "../../Drivers/Frame_Builder/FrameBuilder.hpp"
 /*********************************************************/
 //C INCLUDES
 extern "C"
@@ -11,11 +14,13 @@ extern "C"
 #include <stdint.h>
 #include "main.h"
 #include "stm32f4xx_hal.h"
+#include "../../Drivers/LCD/lcd.h"//ST7789 driver
 }
 /*********************************************************/
 
-
+#define DEFAULT_FONT FONT_6X8
 QueueableClass beep;
+Frame_Builder FB;
 
 //Extension of QueueableClass for demonstration purposes only. Must me done in other file.
 class flashOnce: public QueueableClass{
@@ -79,17 +84,24 @@ KY_040 encoder(
 void MainCPP(){
 
 	//SETUP START
-
+	LCD_init();
 	GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
 	//END SETUP
 
 	//MAIN LOOP START
 	while(1){
-
-
+		uint32_t startTime = HAL_GetTick();
+		//UG_FillFrame(0, 0, 64, 32, 0xffff);
 		GPIOB -> ODR ^= GPIO_PIN_10;
-		HAL_Delay(100);
+		//HAL_Delay(100);
+		FB.FB_Draw8bitTile(0,0, 240,main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);
+		std::string str;
+		uint8_t t = UG_FontGetTransparency();
+		uint32_t FPF = 1000/(HAL_GetTick()-startTime);
+		str = std::to_string(FPF) + " fps";
+		LCD_PutStr(10, 15, &str[0], DEFAULT_FONT, 0x0000, 0xffff );
 
+		LCD_Update();
 	}
 	//END MAIN LOOP
 }

@@ -75,7 +75,6 @@ void Async_Event_Loop::dequeue(QueueableClass* current) {
         // Dequeuing an item in the middle or end
         getPrevious()->setNextClass(current->getNextClass());
     }
-
     current->setNextClass(nullptr); // Ensure dequeued object points to nothing
 }
 
@@ -102,7 +101,6 @@ void Async_Event_Loop::ASYNC_LOOP() {
             current = next; // Move to the next item in the queue
 
         } while (current != nullptr);
-
         // After the loop, update end pointer
         setEnd(getPrevious());
         // Reset previous pointer to beginning (if needed)
