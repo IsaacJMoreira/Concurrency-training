@@ -93,12 +93,9 @@ void MainCPP(){
 	//MAIN LOOP START
 	while(1){
 		uint32_t startTime = HAL_GetTick();
-		//UG_FillFrame(0, 0, 64, 32, 0xffff);
 		GPIOB -> ODR ^= GPIO_PIN_10;
-		//HAL_Delay(100);
 		FB.FB_Draw8bitTile(0,0, 240,main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);
 		std::string str;
-		uint8_t t = UG_FontGetTransparency();
 		uint32_t FPF = 1000/(HAL_GetTick()-startTime);
 		str = std::to_string(FPF) + " fps";
 		LCD_PutStr(10, 15, &str[0], DEFAULT_FONT, 0x0000, 0xffff );
