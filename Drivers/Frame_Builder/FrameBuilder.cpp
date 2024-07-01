@@ -33,9 +33,10 @@ Frame_Builder::~Frame_Builder() {
 
 //Translates and draws
 void Frame_Builder::FB_Draw8bitTile(
-								uint8_t x,
-								uint8_t y,
-								uint16_t tileSide,
+								uint8_t xi,
+								uint8_t yi,
+								uint8_t xe,
+								uint8_t ye,
 								const uint16_t palette[],
 								void (*func)(UG_S16, UG_S16, UG_COLOR),
 								const uint8_t tile[],
@@ -43,23 +44,68 @@ void Frame_Builder::FB_Draw8bitTile(
 								bool setTrans
 								)
 {
+	// check if the tile is not empty
+	uint8_t width = ye - yi + 1;
+	uint8_t height = xe - xi + 1;
+	if (width < 1|| height < 1) return;
 
-	// check if the tile is a perfect square and if its not empty
-	if (tileSide == 0.0f) return;
 
-
-	 for(uint16_t Y = 0; Y < (uint16_t)tileSide; Y++){
-		 for(uint16_t X = 0; X < (uint16_t)tileSide; X++){
-			 uint16_t position = X+Y*tileSide;
+	 for(uint16_t Y = 0; Y < width; Y++){
+		 for(uint16_t X = 0; X < height; X++){
+			 uint16_t position = X + Y * width;
 			 uint8_t color = tile[position];
 			 if(setTrans){
 				 if(color != transColor){
 					 uint8_t pixel16bits = tile[position];
-				 	 func(X + x, Y + y, palette[pixel16bits]);
+				 	 func(X + xi, Y + yi, palette[pixel16bits]);
 			     }
 			 }else{
 				 uint8_t pixel16bits = tile[position];
-				 func(X + x, Y + y, palette[pixel16bits]);
+				 func(X + xi, Y + yi, palette[pixel16bits]);
+			 }
+		 }
+ 	 }
+ }
+void Frame_Builder::FB_BGPartialRedraw(
+								uint8_t xi,
+								uint8_t yi,
+								uint8_t xe,
+								uint8_t ye,
+								uint16_t tileHeight,
+								uint16_t tileWidth,
+								const uint16_t palette[],
+								void (*func)(UG_S16, UG_S16, UG_COLOR),
+								const uint8_t tile[],
+								uint8_t transColor,
+								bool setTrans
+								)
+{
+	// check if the tile is not empty
+	uint32_t tileArrSize = tileHeight*tileWidth;
+	uint16_t portionWidth = xe - xi + 1;
+	uint16_t portionHeight = ye - yi + 1;
+	uint32_t portionArrSize = portionWidth * portionHeight;
+
+	//condom against dumb programmer AIDS
+	if ((portionArrSize > tileArrSize)||
+		 (xi + portionWidth > tileWidth)||
+		 (yi + portionHeight > tileHeight)||
+		 (tileArrSize == 0)||
+		 (portionArrSize ==0)) return;
+
+
+	 for(uint16_t Y = 0; Y < portionHeight; Y++){
+		 for(uint16_t X = 0; X < portionWidth; X++){
+			 uint16_t position = X + xi + (Y + yi) * tileWidth;
+			 uint8_t color = tile[position];
+			 if(setTrans){
+				 if(color != transColor){
+					 uint8_t pixel16bits = tile[position];
+				 	 func(X + xi, Y + yi, palette[pixel16bits]);
+			     }
+			 }else{
+				 uint8_t pixel16bits = tile[position];
+				 func(X + xi, Y + yi, palette[pixel16bits]);
 			 }
 		 }
  	 }

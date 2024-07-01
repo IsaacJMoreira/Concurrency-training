@@ -3,6 +3,7 @@
 /*********************************************************/
 //CPP INCLUDES
 #include <string>
+#include <stdio.h>
 #include "MainCPP.hpp"
 #include "../../Drivers/KY-040/KY040.hpp"
 #include "../../Drivers/Async_Event_Loop/AsyncEventLoop.hpp"
@@ -78,28 +79,63 @@ KY_040 encoder(
 		GPIO_PIN_2,
 		GPIOA,
 		GPIO_PIN_1,
-		-10,
-		10,
+		0,
+		11,
 		beepActionWrapper
 		);
+
+void floatToString(float value, char* buffer, int bufferSize, int precision = 2) {
+    int intPart = (int)value;  // Integer part
+    int decPart = 0;
+
+    // Compute decimal part manually
+    float remainder = value - intPart;
+    for (int i = 0; i < precision; ++i) {
+        remainder *= 10;
+        decPart = decPart * 10 + int(remainder) % 10;
+        remainder -= int(remainder);
+    }
+
+    snprintf(buffer, bufferSize, "%d.%0*d fps", intPart, precision, decPart);
+}
 //CPP ENTRY POINT
 void MainCPP(){
 
 	//SETUP START
 	LCD_init();
 	GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
+	FB.FB_Draw8bitTile(0,0, 239, 239,main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);//DRAW BG
+	uint8_t x = 120, y = 150;
+	uint8_t prevX = x;
+	uint8_t prevY = y;
 	//END SETUP
 
 	//MAIN LOOP START
 	while(1){
 		uint32_t startTime = HAL_GetTick();
 		GPIOB -> ODR ^= GPIO_PIN_10;
-		FB.FB_Draw8bitTile(0,0, 240,main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);
-		std::string str;
-		uint32_t FPF = 1000/(HAL_GetTick()-startTime);
-		str = std::to_string(FPF) + " fps";
-		LCD_PutStr(10, 15, &str[0], DEFAULT_FONT, 0x0000, 0xffff );
 
+
+
+
+
+		x = 120 + (uint8_t)encoder.getSteps() * 5;
+		FB.FB_BGPartialRedraw(prevX, prevY, prevX+63, prevY+63, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);
+		FB.FB_Draw8bitTile(x, y, x+63, y+63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
+		prevX = x;
+		prevY = y;
+
+		std::string str;
+
+
+		// Assuming startTime is defined elsewhere and HAL_GetTick() returns time in milliseconds
+		float FPS = 1000.0f / (HAL_GetTick() - startTime);
+		    char strBuffer[20]; // Adjust the size as per your requirement
+
+		    floatToString(FPS, strBuffer, sizeof(strBuffer));
+
+		    // Assuming LCD_PutStr() function displays the string on LCD
+		    LCD_PutStr(10, 15, strBuffer, DEFAULT_FONT, 0x0000, 0xffff);
 		LCD_Update();
 	}
 	//END MAIN LOOP
