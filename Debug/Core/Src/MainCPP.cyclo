@@ -14,10 +14,10 @@
 ../Core/Src/MainCPP.cpp:73:7:void ButtonEncoderWrapper()	1
 ../Core/Src/MainCPP.cpp:87:6:void floatToString(float, char*, int, int)	2
 ../Core/Src/MainCPP.cpp:102:6:void MainCPP()	1
-../Core/Src/MainCPP.cpp:149:7:void EVENT_LOOP_WRAPPER()	1
-../Core/Src/MainCPP.cpp:152:7:void RotaryEncoderWrapper()	1
-../Core/Src/MainCPP.cpp:155:7:void MainC()	1
+../Core/Src/MainCPP.cpp:180:7:void EVENT_LOOP_WRAPPER()	1
+../Core/Src/MainCPP.cpp:183:7:void RotaryEncoderWrapper()	1
+../Core/Src/MainCPP.cpp:186:7:void MainC()	1
 ../Core/Src/MainCPP.cpp:29:7:flashOnce::~flashOnce()	1
-../Core/Src/MainCPP.cpp:158:1:void __static_initialization_and_destruction_0(int, int)	5
-../Core/Src/MainCPP.cpp:158:1:cpp)	1
-../Core/Src/MainCPP.cpp:158:1:cpp)	1
+../Core/Src/MainCPP.cpp:189:1:void __static_initialization_and_destruction_0(int, int)	5
+../Core/Src/MainCPP.cpp:189:1:cpp)	1
+../Core/Src/MainCPP.cpp:189:1:cpp)	1

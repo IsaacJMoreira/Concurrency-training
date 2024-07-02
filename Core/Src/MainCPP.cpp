@@ -80,7 +80,7 @@ KY_040 encoder(
 		GPIOA,
 		GPIO_PIN_1,
 		0,
-		11,
+	   70,
 		beepActionWrapper
 		);
 
@@ -104,10 +104,25 @@ void MainCPP(){
 	//SETUP START
 	LCD_init();
 	GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
-	FB.FB_Draw8bitTile(0,0, 239, 239,main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);//DRAW BG
-	uint8_t x = 120, y = 150;
-	uint8_t prevX = x;
-	uint8_t prevY = y;
+  /* FB.FB_LongBGPartialDraw(
+									0,
+									0,
+									239,
+									239,
+									0,
+									0,
+									240,
+									240,
+									240,
+									731,
+									 main8bitsPalette,
+									&LCD_DrawPixelFB,
+									LONG_BG
+									);*/
+	//FB.FB_SimpleBGPartialDraw(0, 0, 239, 239, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL);
+	uint16_t x = 0, y = 100;
+	uint16_t prevX = x;
+	uint16_t prevY = y;
 	//END SETUP
 
 	//MAIN LOOP START
@@ -119,9 +134,25 @@ void MainCPP(){
 
 
 
-		x = 120 + (uint8_t)encoder.getSteps() * 5;
-		FB.FB_BGPartialRedraw(prevX, prevY, prevX+63, prevY+63, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL, 0x00, false);
-		FB.FB_Draw8bitTile(x, y, x+63, y+63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
+		x =(uint16_t)encoder.getSteps() * 7;
+		   FB.FB_LongBGPartialDraw(
+											0,
+											0,
+											239,
+											239,
+											x,
+											0,
+											240,
+											240,
+											240,
+											731,
+											main8bitsPalette,
+											&LCD_DrawPixelFB,
+											LONG_BG
+											);
+		//FB.FB_SimpleBGPartialDraw(prevX, prevY, prevX+63, prevY+63, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL);
+		//FB.FB_Draw8bitTile(x, y, x+63, y+63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
+		   FB.FB_Draw8bitTile((240-64)/2, (240-64)/2, (240-64)/2 + 63, (240-64)/2 + 63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
 		prevX = x;
 		prevY = y;
 

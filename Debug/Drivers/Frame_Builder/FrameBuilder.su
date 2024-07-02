@@ -2,5 +2,6 @@
 ../Drivers/Frame_Builder/FrameBuilder.cpp:30:1:Frame_Builder::~Frame_Builder()	16	static
 ../Drivers/Frame_Builder/FrameBuilder.cpp:30:1:virtual Frame_Builder::~Frame_Builder()	16	static
 ../Drivers/Frame_Builder/FrameBuilder.cpp:35:6:void Frame_Builder::FB_Draw8bitTile(uint8_t, uint8_t, uint8_t, uint8_t, const uint16_t*, void (*)(UG_S16, UG_S16, UG_COLOR), const uint8_t*, uint8_t, bool)	32	static
-../Drivers/Frame_Builder/FrameBuilder.cpp:69:6:void Frame_Builder::FB_BGPartialRedraw(uint8_t, uint8_t, uint8_t, uint8_t, uint16_t, uint16_t, const uint16_t*, void (*)(UG_S16, UG_S16, UG_COLOR), const uint8_t*, uint8_t, bool)	40	static
-../Drivers/Frame_Builder/FrameBuilder.cpp:114:6:void Frame_Builder::FB_AssembleFrame()	16	static
+../Drivers/Frame_Builder/FrameBuilder.cpp:70:6:void Frame_Builder::FB_SimpleBGPartialDraw(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, const uint16_t*, void (*)(UG_S16, UG_S16, UG_COLOR), const uint8_t*)	48	static
+../Drivers/Frame_Builder/FrameBuilder.cpp:107:6:void Frame_Builder::FB_LongBGPartialDraw(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t, uint16_t, uint16_t, const uint16_t*, void (*)(UG_S16, UG_S16, UG_COLOR), const uint8_t*)	40	static
+../Drivers/Frame_Builder/FrameBuilder.cpp:148:6:void Frame_Builder::FB_AssembleFrame()	16	static
