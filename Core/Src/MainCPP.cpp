@@ -21,9 +21,16 @@ extern "C"
 }
 /*********************************************************/
 
+FB_8bitBMP DESERT = {
+	 .p = LONG_BG,
+	 .width = 731,
+	 .height = 240,
+	 .palette = main8bitsPalette,
+};
+
 #define DEFAULT_FONT FONT_6X8
 QueueableClass beep;
-Frame_Builder FB;
+Frame_Builder FB(240,240,&LCD_DrawPixelFB);
 
 //Extension of QueueableClass for demonstration purposes only. Must me done in other file.
 class flashOnce: public QueueableClass{
@@ -103,6 +110,7 @@ void MainCPP(){
 
 	//SETUP START
 	LCD_init();
+	FB.setBackground(DESERT);
 	GPIOC -> ODR |= GPIO_PIN_13;//onboard blue led OFF
    FB.FB_LongBGPartialDraw(
 									0,
@@ -110,14 +118,7 @@ void MainCPP(){
 									239,
 									239,
 									0,
-									0,
-									240,
-									240,
-									240,
-									731,
-									 main8bitsPalette,
-									&LCD_DrawPixelFB,
-									LONG_BG
+									0
 									);
 	//FB.FB_SimpleBGPartialDraw(0, 0, 239, 239, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL);
 	uint16_t x = 0, y = 100;
@@ -146,14 +147,7 @@ void MainCPP(){
 														prevX + 64,
 														prevY + 64,
 														X,
-														0,
-														240,
-														240,
-														240,
-														731,
-														main8bitsPalette,
-														&LCD_DrawPixelFB,
-														LONG_BG
+														0
 														);
 		}else{
 			if(steps == 36){
@@ -169,19 +163,12 @@ void MainCPP(){
 														239,
 														239,
 														X,
-														0,
-														240,
-														240,
-														240,
-														731,
-														main8bitsPalette,
-														&LCD_DrawPixelFB,
-														LONG_BG
+														0
 														);
 		}
 
 		//FB.FB_SimpleBGPartialDraw(prevX, prevY, prevX+63, prevY+63, 240, 240, main8bitsPalette, &LCD_DrawPixelFB, SKULL);
-		FB.FB_Draw8bitTile(x, y, x+63, y+63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
+		FB.FB_Draw8bitTile(x, y, x+63, y+63, main8bitsPalette, SHIP, 0xff, true);//sprite
 		//FB.FB_Draw8bitTile((240-64)/2, (240-64)/2, (240-64)/2 + 63, (240-64)/2 + 63, main8bitsPalette, &LCD_DrawPixelFB, SHIP, 0xff, true);//sprite
 		prevX = x;
 		prevY = y;

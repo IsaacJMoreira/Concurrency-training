@@ -8,7 +8,6 @@
 #ifndef FRAME_BUILDER_ASSETS_HPP_
 #define FRAME_BUILDER_ASSETS_HPP_
 
-
 /****************************************************/
 /*           MAIN 8 BITS COLOR PALETTE              */
 /****************************************************/

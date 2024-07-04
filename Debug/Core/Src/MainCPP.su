@@ -1,6 +1,7 @@
 ../Core/Src/../../Drivers/KY-040/KY040.hpp:20:13:void toPerformPlaceholder()	4	static,ignoring_inline_asm
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:29:3:QueueableClass::QueueableClass()	16	static
-../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:34:3:QueueableClass::~QueueableClass()	16	static
+../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:34:11:QueueableClass::~QueueableClass()	16	static
+../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:34:11:virtual QueueableClass::~QueueableClass()	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:36:32:virtual QueueableReturnValue QueueableClass::getState()	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:40:16:virtual void QueueableClass::setNextClass(QueueableClass*)	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:44:27:virtual QueueableClass* QueueableClass::getNextClass()	16	static
@@ -8,16 +9,17 @@
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:58:16:virtual void QueueableClass::enqueue()	16	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:63:16:virtual void QueueableClass::EXECUTE()	24	static
 ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp:96:16:virtual void QueueableClass::setState(QueueableReturnValue)	16	static
-../Core/Src/MainCPP.cpp:31:7:virtual void flashOnce::EXECUTE()	24	static
-../Core/Src/MainCPP.cpp:29:7:flashOnce::flashOnce()	16	static
-../Core/Src/MainCPP.cpp:70:7:void beepActionWrapper()	8	static
-../Core/Src/MainCPP.cpp:73:7:void ButtonEncoderWrapper()	8	static
-../Core/Src/MainCPP.cpp:87:6:void floatToString(float, char*, int, int)	48	static
-../Core/Src/MainCPP.cpp:102:6:void MainCPP()	128	static
-../Core/Src/MainCPP.cpp:210:7:void EVENT_LOOP_WRAPPER()	8	static
-../Core/Src/MainCPP.cpp:213:7:void RotaryEncoderWrapper()	8	static
-../Core/Src/MainCPP.cpp:216:7:void MainC()	8	static
-../Core/Src/MainCPP.cpp:29:7:flashOnce::~flashOnce()	16	static
-../Core/Src/MainCPP.cpp:219:1:void __static_initialization_and_destruction_0(int, int)	40	static
-../Core/Src/MainCPP.cpp:219:1:cpp)	8	static
-../Core/Src/MainCPP.cpp:219:1:cpp)	8	static
+../Core/Src/MainCPP.cpp:38:7:virtual void flashOnce::EXECUTE()	24	static
+../Core/Src/MainCPP.cpp:36:7:flashOnce::flashOnce()	16	static
+../Core/Src/MainCPP.cpp:77:7:void beepActionWrapper()	8	static
+../Core/Src/MainCPP.cpp:80:7:void ButtonEncoderWrapper()	8	static
+../Core/Src/MainCPP.cpp:94:6:void floatToString(float, char*, int, int)	48	static
+../Core/Src/MainCPP.cpp:109:6:void MainCPP()	112	static
+../Core/Src/MainCPP.cpp:197:7:void EVENT_LOOP_WRAPPER()	8	static
+../Core/Src/MainCPP.cpp:200:7:void RotaryEncoderWrapper()	8	static
+../Core/Src/MainCPP.cpp:203:7:void MainC()	8	static
+../Core/Src/MainCPP.cpp:36:7:flashOnce::~flashOnce()	16	static
+../Core/Src/MainCPP.cpp:36:7:virtual flashOnce::~flashOnce()	16	static
+../Core/Src/MainCPP.cpp:206:1:void __static_initialization_and_destruction_0(int, int)	40	static
+../Core/Src/MainCPP.cpp:206:1:cpp)	8	static
+../Core/Src/MainCPP.cpp:206:1:cpp)	8	static

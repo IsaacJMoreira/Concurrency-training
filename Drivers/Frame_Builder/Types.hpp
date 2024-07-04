@@ -18,12 +18,13 @@
 
 typedef uint8_t Tile16Data[256];
 typedef uint8_t Tile240Data[57600];
+typedef Tile16Data spriteCollection[256];
 
 //a tile of side 16 is the smallest tile possible
 //SIZE: 1/4KB
 typedef struct {
-	const Tile16Data *TileData;
-	const uint16_t *Palette;
+	const Tile16Data* TileData;
+	const uint16_t* Palette;
 	const uint8_t TransparentColor;
 	const bool HasTransp;
 } FB_Tile16;
@@ -33,8 +34,8 @@ typedef struct {
 //	They take a large chunk of memory and the BlackPill can only hold 9 of them!
 //SIZE: 56.25KB
 typedef struct {
-	const Tile240Data *TileData;
-	const uint16_t *Palette;
+	const Tile240Data* TileData;
+	const uint16_t* Palette;
 	const uint8_t TransparentColor;
 	const bool HasTransp;
 } FB_Tile240;
@@ -51,15 +52,20 @@ typedef struct {
 //the closer it is to the foreground.
 //SIZE: NUMBER_OF_LAYERS * 0.88KB
 typedef struct{
-	FB_Layer *layers;
+	FB_Layer* layers;
 } FB_Frame;
 
 typedef struct
 {
-   const void* p;
-   const uint16_t width;
-   const uint16_t height;
-   const uint8_t palette;
-} FB_BMP;
+    const uint8_t* p;
+    uint16_t width;
+    uint16_t height;
+    const uint16_t* palette;
+} FB_8bitBMP;
+
+//this is a collection of 256 16x16 tiles.
+typedef struct{
+	const spriteCollection* tileArray;
+}FB_SpriteMap;
 
 #endif /* FRAME_BUILDER_TYPES_HPP_ */

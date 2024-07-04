@@ -31,7 +31,7 @@ enum QueueableReturnValue{
 		 this -> nextClass = nullptr;
 	 }
 
-	 ~QueueableClass(){/*NOTHING TO SEE HERE*/ }
+	 virtual ~QueueableClass(){/*NOTHING TO SEE HERE*/ }
 
 	 virtual QueueableReturnValue getState(void)final{
 		 return this -> state;

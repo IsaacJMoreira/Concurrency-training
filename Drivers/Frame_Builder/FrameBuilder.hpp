@@ -15,15 +15,16 @@ extern "C"{
 
 class Frame_Builder {
 public:
-	Frame_Builder();
+	Frame_Builder(uint16_t screenWidth, uint16_t screenHeight, void (*drawDependency)(int16_t, int16_t, uint16_t));
 	virtual ~Frame_Builder();
+	void setBackground(FB_8bitBMP background);
+	void setSpriteMap(FB_SpriteMap spriteMap);
 	void FB_Draw8bitTile(
 			uint8_t xi,
 			uint8_t yi,
 			uint8_t xe,
 			uint8_t ye,
 			const uint16_t palette[],
-			void (*func)(int16_t, int16_t, uint16_t),
 			const uint8_t tile[],
 			uint8_t transColor = 0x00,
 			bool setTrans = false
@@ -32,29 +33,27 @@ public:
 			uint16_t xi,
 			uint16_t yi,
 			uint16_t xe,
-			uint16_t ye,
-			uint16_t tileHeight,
-			uint16_t tileWidth,
-			const uint16_t palette[],
-			void (*func)(int16_t, int16_t, uint16_t),
-			const uint8_t tile[]
+			uint16_t ye
 			);
 	void FB_LongBGPartialDraw(
-			uint16_t WindowXi,
-			uint16_t WindowYi,
-			uint16_t WindowXf,
-			uint16_t WindowYf,
+			//window coordinates, relative to the screen
+			uint16_t windowXi,
+			uint16_t windowYi,
+			uint16_t windowXf,
+			uint16_t windowYf,
+			//visible area of the background (screen) relative to the background
 			uint16_t screenX,
-			uint16_t screenY,
-			uint8_t screenHeight,
-			uint8_t screenWidth,
-			uint16_t BGHeight,
-			uint16_t BGWidth,
-			const uint16_t palette[],
-			void (*func)(int16_t, int16_t, uint16_t),
-			const uint8_t tile[]
+			uint16_t screenY
 			);
 	void FB_AssembleFrame();
+private:
+	bool noBGFlag = true;
+	bool noSpritesFlag = true;
+	uint16_t screenWidth;
+	uint16_t screenHeight;
+	FB_8bitBMP background;
+	FB_SpriteMap spriteMap;
+	void (*func)(int16_t, int16_t, uint16_t);
 };
 
 #endif /* FRAME_BUILDER_FRAMEBUILDER_HPP_ */
