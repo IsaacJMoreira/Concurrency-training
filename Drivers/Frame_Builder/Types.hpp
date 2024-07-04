@@ -26,7 +26,7 @@ typedef struct {
 	const uint16_t *Palette;
 	const uint8_t TransparentColor;
 	const bool HasTransp;
-} TB_Tile16;
+} FB_Tile16;
 
 //a tile that covers the hole screen has side 240
 //WARNING: it should be used only for backgrounds, masks and full screen images.
@@ -37,12 +37,12 @@ typedef struct {
 	const uint16_t *Palette;
 	const uint8_t TransparentColor;
 	const bool HasTransp;
-} TB_Tile240;
+} FB_Tile240;
 
 //A layer is a collection of small tile pointers
 //Size: 0.88KB
 typedef struct {
-	TB_Tile16 tiles[15][15];//225 tiles per Layer
+	FB_Tile16 tiles[15][15];//225 tiles per Layer
 	uint8_t tileOrder;
 } FB_Layer;
 
@@ -52,6 +52,14 @@ typedef struct {
 //SIZE: NUMBER_OF_LAYERS * 0.88KB
 typedef struct{
 	FB_Layer *layers;
-} TB_Frame;
+} FB_Frame;
+
+typedef struct
+{
+   const void* p;
+   const uint16_t width;
+   const uint16_t height;
+   const uint8_t palette;
+} FB_BMP;
 
 #endif /* FRAME_BUILDER_TYPES_HPP_ */

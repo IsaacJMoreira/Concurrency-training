@@ -35,21 +35,8 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
  ../Core/Src/../../Drivers/Async_Event_Loop/Types.hpp \
  ../Core/Src/../../Drivers/Frame_Builder/Assets.hpp \
  ../Core/Src/../../Drivers/Frame_Builder/FrameBuilder.hpp \
- ../Core/Src/../../Drivers/Frame_Builder/Types.hpp \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_config.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_colors.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_theme.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_button.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_checkbox.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_fonts.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_image.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_progress.h \
- ../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_textbox.h \
- ../Core/Inc/main.h ../Core/Src/../../Drivers/LCD/lcd.h \
- ../Core/Src/../../Drivers/LCD/images.h \
- ../Core/Src/../../Drivers/LCD/../UGUI/ugui.h
+ ../Core/Src/../../Drivers/Frame_Builder/Types.hpp ../Core/Inc/main.h \
+ ../Core/Src/../../Drivers/LCD/lcd.h
 ../Core/Inc/MainCPP.hpp:
 ../Core/Src/../../Drivers/KY-040/KY040.hpp:
 ../Core/Src/../../Drivers/KY-040/types.hpp:
@@ -88,18 +75,5 @@ Core/Src/MainCPP.o: ../Core/Src/MainCPP.cpp ../Core/Inc/MainCPP.hpp \
 ../Core/Src/../../Drivers/Frame_Builder/Assets.hpp:
 ../Core/Src/../../Drivers/Frame_Builder/FrameBuilder.hpp:
 ../Core/Src/../../Drivers/Frame_Builder/Types.hpp:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_config.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_colors.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_theme.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_button.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_checkbox.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_fonts.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_image.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_progress.h:
-../Core/Src/../../Drivers/Frame_Builder/../UGUI/ugui_textbox.h:
 ../Core/Inc/main.h:
 ../Core/Src/../../Drivers/LCD/lcd.h:
-../Core/Src/../../Drivers/LCD/images.h:
-../Core/Src/../../Drivers/LCD/../UGUI/ugui.h:

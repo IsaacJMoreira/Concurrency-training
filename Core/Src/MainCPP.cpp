@@ -196,7 +196,7 @@ void MainCPP(){
 		    floatToString(FPS, strBuffer, sizeof(strBuffer));
 
 		    // Assuming LCD_PutStr() function displays the string on LCD
-		    LCD_PutStr(10, 15, strBuffer, DEFAULT_FONT, 0x0000, 0xffff);
+		    //LCD_PutStr(10, 15, strBuffer, DEFAULT_FONT, 0x0000, 0xffff);//TODO
 		LCD_Update();
 	}
 	//END MAIN LOOP

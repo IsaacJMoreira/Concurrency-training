@@ -45,5 +45,4 @@ Drivers/Frame_Builder \
 Drivers/KY-040 \
 Drivers/LCD \
 Drivers/STM32F4xx_HAL_Driver/Src \
-Drivers/UGUI \
 

@@ -10,7 +10,7 @@
 
 #include "Types.hpp"
 extern "C"{
-#include "../UGUI/ugui.h"
+
 }
 
 class Frame_Builder {
@@ -23,7 +23,7 @@ public:
 			uint8_t xe,
 			uint8_t ye,
 			const uint16_t palette[],
-			void (*func)(UG_S16, UG_S16, UG_COLOR),
+			void (*func)(int16_t, int16_t, uint16_t),
 			const uint8_t tile[],
 			uint8_t transColor = 0x00,
 			bool setTrans = false
@@ -36,7 +36,7 @@ public:
 			uint16_t tileHeight,
 			uint16_t tileWidth,
 			const uint16_t palette[],
-			void (*func)(UG_S16, UG_S16, UG_COLOR),
+			void (*func)(int16_t, int16_t, uint16_t),
 			const uint8_t tile[]
 			);
 	void FB_LongBGPartialDraw(
@@ -51,7 +51,7 @@ public:
 			uint16_t BGHeight,
 			uint16_t BGWidth,
 			const uint16_t palette[],
-			void (*func)(UG_S16, UG_S16, UG_COLOR),
+			void (*func)(int16_t, int16_t, uint16_t),
 			const uint8_t tile[]
 			);
 	void FB_AssembleFrame();

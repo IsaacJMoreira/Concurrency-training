@@ -5,15 +5,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Drivers/LCD/images.c \
 ../Drivers/LCD/lcd.c 
 
 C_DEPS += \
-./Drivers/LCD/images.d \
 ./Drivers/LCD/lcd.d 
 
 OBJS += \
-./Drivers/LCD/images.o \
 ./Drivers/LCD/lcd.o 
 
 
@@ -24,7 +21,7 @@ Drivers/LCD/%.o Drivers/LCD/%.su Drivers/LCD/%.cyclo: ../Drivers/LCD/%.c Drivers
 clean: clean-Drivers-2f-LCD
 
 clean-Drivers-2f-LCD:
-	-$(RM) ./Drivers/LCD/images.cyclo ./Drivers/LCD/images.d ./Drivers/LCD/images.o ./Drivers/LCD/images.su ./Drivers/LCD/lcd.cyclo ./Drivers/LCD/lcd.d ./Drivers/LCD/lcd.o ./Drivers/LCD/lcd.su
+	-$(RM) ./Drivers/LCD/lcd.cyclo ./Drivers/LCD/lcd.d ./Drivers/LCD/lcd.o ./Drivers/LCD/lcd.su
 
 .PHONY: clean-Drivers-2f-LCD
 

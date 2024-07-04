@@ -1,13 +1,5 @@
 Drivers/LCD/lcd.o: ../Drivers/LCD/lcd.c ../Drivers/LCD/lcd.h \
- ../Drivers/LCD/images.h ../Drivers/LCD/../UGUI/ugui.h \
- ../Drivers/LCD/../UGUI/ugui_config.h \
- ../Drivers/LCD/../UGUI/ugui_colors.h ../Drivers/LCD/../UGUI/ugui_theme.h \
- ../Drivers/LCD/../UGUI/ugui_button.h ../Drivers/LCD/../UGUI/ugui.h \
- ../Drivers/LCD/../UGUI/ugui_checkbox.h \
- ../Drivers/LCD/../UGUI/ugui_fonts.h ../Drivers/LCD/../UGUI/ugui_image.h \
- ../Drivers/LCD/../UGUI/ugui_progress.h \
- ../Drivers/LCD/../UGUI/ugui_textbox.h ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -37,18 +29,6 @@ Drivers/LCD/lcd.o: ../Drivers/LCD/lcd.c ../Drivers/LCD/lcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 ../Drivers/LCD/lcd.h:
-../Drivers/LCD/images.h:
-../Drivers/LCD/../UGUI/ugui.h:
-../Drivers/LCD/../UGUI/ugui_config.h:
-../Drivers/LCD/../UGUI/ugui_colors.h:
-../Drivers/LCD/../UGUI/ugui_theme.h:
-../Drivers/LCD/../UGUI/ugui_button.h:
-../Drivers/LCD/../UGUI/ugui.h:
-../Drivers/LCD/../UGUI/ugui_checkbox.h:
-../Drivers/LCD/../UGUI/ugui_fonts.h:
-../Drivers/LCD/../UGUI/ugui_image.h:
-../Drivers/LCD/../UGUI/ugui_progress.h:
-../Drivers/LCD/../UGUI/ugui_textbox.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:

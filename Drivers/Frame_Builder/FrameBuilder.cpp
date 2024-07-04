@@ -38,7 +38,7 @@ void Frame_Builder::FB_Draw8bitTile(
 								uint8_t xe,
 								uint8_t ye,
 								const uint16_t palette[],
-								void (*func)(UG_S16, UG_S16, UG_COLOR),
+								void (*func)(int16_t, int16_t, uint16_t),
 								const uint8_t tile[],
 								uint8_t transColor,
 								bool setTrans
@@ -75,7 +75,7 @@ void Frame_Builder::FB_SimpleBGPartialDraw(
 								uint16_t BGHeight,
 								uint16_t BGWidth,
 								const uint16_t palette[],
-								void (*func)(UG_S16, UG_S16, UG_COLOR),
+								void (*func)(int16_t, int16_t, uint16_t),
 								const uint8_t tile[]
 								)
 {
@@ -119,7 +119,7 @@ void Frame_Builder::FB_LongBGPartialDraw(
 								uint16_t BGHeight,
 								uint16_t BGWidth,
 								const uint16_t palette[],
-								void (*func)(UG_S16, UG_S16, UG_COLOR),
+								void (*func)(int16_t, int16_t, uint16_t),
 								const uint8_t tile[]
 								)
 {

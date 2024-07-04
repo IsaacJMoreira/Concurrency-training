@@ -1,8 +1,7 @@
 #ifndef __ST7735_H__
 #define __ST7735_H__
 
-#include "images.h"
-#include "../UGUI/ugui.h"
+
 #include "main.h"
 
 /* For demo only. Minimum is 32, 128 and higher will enable all tests */
@@ -228,21 +227,13 @@ void LCD_SetRotation(uint8_t m);
 void LCD_DrawPixel(int16_t x, int16_t y, uint16_t color);
 void LCD_DrawPixelFB(int16_t x, int16_t y, uint16_t color);
 int8_t LCD_Fill(uint16_t xSta, uint16_t ySta, uint16_t xEnd, uint16_t yEnd, uint16_t color);
-
-/* Graphical functions. */
-int8_t LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color);
-void LCD_DrawImage(uint16_t x, uint16_t y, UG_BMP* bmp);
 void LCD_InvertColors(uint8_t invert);
 void LCD_Update(void);
-/* Text functions. */
-void LCD_PutChar(uint16_t x, uint16_t y, char ch, UG_FONT* font, uint16_t color, uint16_t bgcolor);
-void LCD_PutStr(uint16_t x, uint16_t y,  char *str, UG_FONT* font, uint16_t color, uint16_t bgcolor);
-
 /* Extended Graphical functions. */
 /* Command functions */
 void LCD_TearEffect(uint8_t tear);
 
 /* Simple test function. */
-void LCD_Test(void);
+
 
 #endif // __ST7735_H__

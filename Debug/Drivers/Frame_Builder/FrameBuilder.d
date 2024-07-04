@@ -1,19 +1,7 @@
 Drivers/Frame_Builder/FrameBuilder.o: \
  ../Drivers/Frame_Builder/FrameBuilder.cpp \
- ../Drivers/Frame_Builder/../LCD/lcd.h \
- ../Drivers/Frame_Builder/../LCD/images.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_config.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_colors.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_theme.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_button.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_checkbox.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_fonts.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_image.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_progress.h \
- ../Drivers/Frame_Builder/../LCD/../UGUI/ugui_textbox.h \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../Drivers/Frame_Builder/../LCD/lcd.h ../Core/Inc/main.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -43,22 +31,8 @@ Drivers/Frame_Builder/FrameBuilder.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Drivers/Frame_Builder/FrameBuilder.hpp \
- ../Drivers/Frame_Builder/Types.hpp \
- ../Drivers/Frame_Builder/../UGUI/ugui.h \
- ../Drivers/Frame_Builder/Assets.hpp
+ ../Drivers/Frame_Builder/Types.hpp ../Drivers/Frame_Builder/Assets.hpp
 ../Drivers/Frame_Builder/../LCD/lcd.h:
-../Drivers/Frame_Builder/../LCD/images.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_config.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_colors.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_theme.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_button.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_checkbox.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_fonts.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_image.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_progress.h:
-../Drivers/Frame_Builder/../LCD/../UGUI/ugui_textbox.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -91,5 +65,4 @@ Drivers/Frame_Builder/FrameBuilder.o: \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Drivers/Frame_Builder/FrameBuilder.hpp:
 ../Drivers/Frame_Builder/Types.hpp:
-../Drivers/Frame_Builder/../UGUI/ugui.h:
 ../Drivers/Frame_Builder/Assets.hpp:
